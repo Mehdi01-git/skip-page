@@ -1,54 +1,70 @@
-# React + TypeScript + Vite
+# 🧪 Skip Selection Test – React + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hi! This is my submission for the **Skip page** test. The goal was to create an interactive and responsive UI where users can view and select different skip hire options while keeping original functionality intact.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✅ What I Built
 
-## Expanding the ESLint configuration
+- A responsive **grid of skip cards**, each showing key info like size, features, price, and badges (e.g. “Recommended” or “Save £X”).
+- Users can **hover** or **click** on a card to highlight it, and **select a skip** using the button.
+- All styling is clean, modern, and responsive across screen sizes.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠 Tech Stack
+
+- **React (with TypeScript)** – for strong typing and clean component structure
+- **Tailwind CSS** – for fast, utility-first styling
+- **TanStack Query** – for efficient and powerful data fetching and caching
+- **Lucide Icons** – for clean and consistent icons
+- **Vite** – for fast builds and dev experience
+
+---
+
+## 💡 My Approach
+
+- Built with a **modular, component-first mindset** — keeping logic clean and easy to scale.
+- The `SkipSelectionGrid` is driven by props:
+  - A list of skip items
+  - Selected & hovered item IDs
+  - State setters for click and hover behavior
+- Designed for **smooth UX**:
+  - Subtle glow effects on hover
+  - Animated card transitions
+  - Conditional badges for _“Recommended”_ and _“Save £X”_ stand out visually
+- Each card surfaces:
+  - Key info like size, popularity, features
+  - **Price (incl. VAT)** with optional extras like transport/per-tonne costs
+- Interaction logic is clean:
+  - **Click-to-select** toggles state visually and programmatically
+  - Button click uses `stopPropagation` to avoid conflict with parent click
+
+---
+
+## 🔄 Data Transformation
+
+I included a `transformSkips()` function to:
+
+- Format raw data into UI-ready shape
+- Calculate price with VAT
+- Add random popularity and flags for badges
+- Build dynamic features list
+- Support additional costs (e.g. transport, per-tonne)
+
+---
+
+## 🚀 Running the Project
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Or open it in CodeSandbox for a live preview.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🎯 Goal
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The goal was to create a clean, responsive UI with attention to UX detail. I focused on interactivity, code clarity, and visual feedback.
+
+Thanks for reviewing!
