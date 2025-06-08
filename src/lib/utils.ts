@@ -21,3 +21,14 @@ export type Skip = {
   perTonneCost?: number;
   features: string[];
 };
+export interface RawSkip {
+  id?: string | number;
+  size: number;
+  vat?: number;
+  price_before_vat?: number;
+  hire_period_days?: number;
+  allowed_on_road?: boolean;
+  allows_heavy_waste?: boolean;
+  transport_cost?: number;
+  per_tonne_cost?: number;
+}

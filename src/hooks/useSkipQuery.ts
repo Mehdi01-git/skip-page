@@ -1,6 +1,8 @@
+import type { RawSkip, Skip } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 
-const transformSkips = (data: any[]) =>
+
+const transformSkips = (data: RawSkip[]): Skip[] =>
     data.map((skip, index) => {
         const vatRate = skip.vat || 0;
         const priceWithVat = skip.price_before_vat
@@ -44,7 +46,7 @@ export const useSkipsQuery = (
                     `https://app.wewantwaste.co.uk/api/skips/by-location?postcode=${postcode}&area=${area}`
                 );
                 if (!res.ok) throw new Error("Failed to fetch");
-                const data = await res.json();
+                const data: RawSkip[] = await res.json();
                 return transformSkips(data);
             } catch (error) {
                 console.error("Error fetching skips:", error);
