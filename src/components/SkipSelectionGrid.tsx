@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { ArrowRight, Award, Star, TrendingUp, Zap } from "lucide-react";
 import { Button } from "./ui/button";
@@ -8,18 +8,16 @@ import type { Skip } from "@/lib/utils";
 type Props = {
   skips: Skip[];
   selectedSkip: string | null;
-  hoveredSkip: string | null;
   setSelectedSkip: (id: string | null) => void;
-  setHoveredSkip: (id: string | null) => void;
 };
 
 const SkipSelectionGrid: React.FC<Props> = ({
   skips,
   selectedSkip,
-  hoveredSkip,
   setSelectedSkip,
-  setHoveredSkip,
 }) => {
+  const [hoveredSkip, setHoveredSkip] = useState<string | null>(null);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {skips.map((skip, index) => (

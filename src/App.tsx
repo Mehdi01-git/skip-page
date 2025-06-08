@@ -1,15 +1,14 @@
-import { useState } from "react";
 import Header from "./components/Header";
 import SkipSelectionGrid from "./components/SkipSelectionGrid";
 import { useSkipsQuery } from "./hooks/useSkipQuery";
 import HeroSection from "./components/HeroSection";
 import BottomNav from "./components/BottomNav";
 import "./App.css";
+import { useStore } from "./store";
 
 function App() {
-  const { data: skips = [], isLoading } = useSkipsQuery();
-  const [selectedSkip, setSelectedSkip] = useState<string | null>(null);
-  const [hoveredSkip, setHoveredSkip] = useState<string | null>(null);
+  const { data: skips = [], isLoading, isError } = useSkipsQuery();
+  const { selectedSkip, setSelectedSkip } = useStore();
   const selectedSkipData = skips.find((skip) => skip.id === selectedSkip);
 
   return (
@@ -32,6 +31,7 @@ function App() {
         {/* Skip Selection Grid */}
         <SkipSelectionGrid
           isLoading={isLoading}
+          isError={isError}
           skips={skips}
           placeholder={
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -43,9 +43,7 @@ function App() {
             </div>
           }
           selectedSkip={selectedSkip}
-          hoveredSkip={hoveredSkip}
           setSelectedSkip={setSelectedSkip}
-          setHoveredSkip={setHoveredSkip}
         />
       </div>
 
